@@ -6,9 +6,20 @@ const Countries = () => {
 
   const [markbtn, setmarkbtn] = useState([]);
   const Markhandel = (countrie) => {
-    console.log(countrie)
+    // console.log(countrie)
     const newmark = [...markbtn, countrie];
     setmarkbtn(newmark)
+  }
+  const [flag, setflag] = useState([]);
+  const ClikForflag = countrie => {
+    const newvalu=[...flag,countrie]
+    // console.log(countrie)
+    setflag(newvalu)
+  }
+  const [areaa, setareaa] = useState([])
+  const Areahandel = (arrr) => {
+    const createarr=[...areaa,arrr]
+    setareaa(createarr)
   }
 
   useEffect(() => {
@@ -20,6 +31,9 @@ const Countries = () => {
   return (
     <div>
       <h2>country: {countries.length}</h2>
+      {
+        areaa.map((a, id) => <h3 key={id}>{a?.area}</h3>)
+      }
       <div>
         <h3>visited country: {markbtn.length}</h3>
         <ul>
@@ -28,10 +42,13 @@ const Countries = () => {
           }
         </ul>
       </div>
+      {
+      flag.map((f,id)=><img className='imgsize' key={id} src={f.flags.png} alt="" />)
+      }
       
       <div className='countrys-container'>
           {
-        countries.map(countrie=><Countrie Markhandel={Markhandel} key={countrie.ccn3} countrie={countrie}></Countrie>)
+        countries.map(countrie=><Countrie Areahandel={Areahandel} ClikForflag={ClikForflag} Markhandel={Markhandel} key={countrie.ccn3} countrie={countrie}></Countrie>)
       }
       </div>
     </div>
